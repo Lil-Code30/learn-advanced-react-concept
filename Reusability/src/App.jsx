@@ -2,6 +2,7 @@ import { FaBitcoin } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 
 import Button from "./components/Button";
+import Avatar from "./components/Avatar";
 
 function App() {
   const handleLoginWithGoogle = () => {
@@ -25,6 +26,13 @@ function App() {
           Hack me
         </Button>
       </div>
+      <section className="mt-10 flex justify-center items-center gap-3">
+        <Avatar src="../public/avatar.jpg" alt="Avatar image" />
+
+        <Avatar>BZ</Avatar>
+
+        <Avatar />
+      </section>
     </main>
   );
 }
