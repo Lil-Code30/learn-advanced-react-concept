@@ -11,14 +11,18 @@ function App() {
   return (
     <main className="flex flex-col justify-center item-center md:w-2/3 w-[90%] mx-auto mt-10">
       <div className="grid grid-cols-2 gap-4">
-        <Button className="bg-blue-500 border-2 border-black px-4 py-2 rounded flex items-center gap-2 font-bold text-white text-lg">
+        <Button variant="danger" className="button">
           <FaBitcoin /> Buy now!
         </Button>
         <Button
+          variant="success"
           onClick={handleLoginWithGoogle}
-          className="bg-white text-green-500 font-bold border-2 border-black px-4 py-2 rounded flex items-center gap-2 text-lg"
+          className="button"
         >
           <FcGoogle /> Log in with Google
+        </Button>
+        <Button className="button" variant="warning">
+          Hack me
         </Button>
       </div>
     </main>
