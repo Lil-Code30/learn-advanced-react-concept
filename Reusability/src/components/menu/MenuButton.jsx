@@ -1,10 +1,9 @@
 import React from "react";
 import Button from "../Button";
 
-export default function MenuButton({ children, toggle }) {
-  return (
-    <Button className="button" onClick={toggle}>
-      {children}
-    </Button>
-  );
+import { MenuContext } from "./Menu";
+
+export default function MenuButton({ children }) {
+  // const toggle = React.useContext(MenuContext).toggle;
+  return <Button className="button">{children}</Button>;
 }

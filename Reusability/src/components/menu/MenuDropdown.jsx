@@ -3,7 +3,7 @@ import { useContext } from "react";
 import MenuContext from "./Menu";
 
 export default function MenuDropdown({ children }) {
-  const toggle = useContext(MenuContext);
+  const open = useContext(MenuContext);
 
-  return toggle && <div className="menu-dropdown">{children}</div>;
+  return open && <div className="menu-dropdown">{children}</div>;
 }

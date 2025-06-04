@@ -6,7 +6,7 @@ import MenuDropdown from "./MenuDropdown";
 const MenuContext = createContext();
 
 export default function Menu({ children }) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   function toggle() {
     setOpen((prevOpen) => !prevOpen);
@@ -14,7 +14,7 @@ export default function Menu({ children }) {
 
   return (
     <MenuContext.Provider value={open}>
-      <div className="menu">{children}</div>{" "}
+      <div className="menu">{children}</div>
     </MenuContext.Provider>
   );
 }
