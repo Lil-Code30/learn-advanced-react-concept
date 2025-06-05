@@ -5,6 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 
 import Button from "./components/Button";
 import Avatar from "./components/Avatar";
+import Decision from "./components/Decision";
 import Menu from "./components/menu/Menu";
 import MenuButton from "./components/menu/MenuButton";
 import MenuDropdown from "./components/menu/MenuDropdown";
@@ -47,7 +48,7 @@ function App() {
   }
 
   return (
-    <main className="flex flex-col justify-center item-center md:w-2/3 w-[90%] mx-auto mt-10">
+    <main className="flex flex-col justify-center item-center md:w-2/3 w-[90%] mx-auto my-10">
       <div className="grid grid-cols-2 gap-4">
         <Button variant="danger" className="button">
           <FaBitcoin /> Buy now!
@@ -120,6 +121,26 @@ function App() {
             <li key={i}>{idea}</li>
           ))}
         </ol>
+      </section>
+      <section>
+        <div>
+          <Decision
+            render={(goingOut) => {
+              return (
+                <h1 className="text-2xl font-bold my-3 ">
+                  Am I going out tonight??{" "}
+                  <span
+                    className={`font-semibold bg-${
+                      goingOut ? "blue" : "red"
+                    }-500 px-2 py-1 rounded text-white`}
+                  >
+                    {goingOut ? "Yes!" : "Nope..."}
+                  </span>
+                </h1>
+              );
+            }}
+          />
+        </div>
       </section>
     </main>
   );
