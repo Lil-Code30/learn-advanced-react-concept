@@ -124,8 +124,8 @@ function App() {
       </section>
       <section>
         <div>
-          <Decision
-            render={(goingOut) => {
+          <Decision>
+            {(goingOut) => {
               return (
                 <h1 className="text-2xl font-bold my-3 ">
                   Am I going out tonight??{" "}
@@ -139,7 +139,7 @@ function App() {
                 </h1>
               );
             }}
-          />
+          </Decision>
         </div>
       </section>
     </main>

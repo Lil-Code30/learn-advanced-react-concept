@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Decision({ render }) {
+export default function Decision({ children }) {
   const [goingOut, setGoingOut] = React.useState(false);
 
   function toggleGoingOut() {
@@ -15,7 +15,7 @@ export default function Decision({ render }) {
       >
         Change mind
       </button>
-      {render(goingOut)}
+      {children(goingOut)}
     </div>
   );
 }
