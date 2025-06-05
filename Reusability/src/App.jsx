@@ -1,3 +1,5 @@
+import React from "react";
+
 import { FaBitcoin } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 
@@ -13,6 +15,20 @@ function App() {
     console.log("Logging in...");
   };
   const sports = ["Tennis", "Pickleball", "Racquetball", "Squash"];
+
+  // understanding refs
+  const [on, setOn] = React.useState(false);
+  const renderCount = React.useRef(0); // { current: 0 } refs is a mutable object with key current and value 0
+
+  function forceRender() {
+    setOn((prevOn) => !prevOn);
+  }
+  function incrementRenderCount() {
+    renderCount.current++;
+  }
+  React.useEffect(() => {
+    renderCount.current++;
+  });
   return (
     <main className="flex flex-col justify-center item-center md:w-2/3 w-[90%] mx-auto mt-10">
       <div className="grid grid-cols-2 gap-4">
@@ -46,6 +62,21 @@ function App() {
             ))}
           </MenuDropdown>
         </Menu>
+      </div>
+      <div className="mt-10 flex-center flex-col">
+        <h3 className="text-2xl font-bold mb-3">Understanding refs</h3>
+        <button className="button bg-blue-500" onClick={forceRender}>
+          Force re-render w/ state change
+        </button>
+        <button
+          className="button bg-violet-500 mt-3"
+          onClick={incrementRenderCount}
+        >
+          Increment Ref Count
+        </button>
+        <h4 className="text-lg font-semibold mt-3 ">
+          Render count: {renderCount.current}
+        </h4>
       </div>
     </main>
   );
