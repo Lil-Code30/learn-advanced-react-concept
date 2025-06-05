@@ -29,6 +29,23 @@ function App() {
   React.useEffect(() => {
     renderCount.current++;
   });
+
+  // understanding refs with DOM manipulation
+  const [text, setText] = React.useState("");
+  const [list, setList] = React.useState([]);
+  const inputRef = React.useRef(null);
+
+  function addProjectIdea(e) {
+    e.preventDefault();
+
+    if (!text) return;
+
+    setList((prevList) => [...prevList, text]);
+    setText("");
+
+    inputRef.current.focus();
+  }
+
   return (
     <main className="flex flex-col justify-center item-center md:w-2/3 w-[90%] mx-auto mt-10">
       <div className="grid grid-cols-2 gap-4">
@@ -78,6 +95,32 @@ function App() {
           Render count: {renderCount.current}
         </h4>
       </div>
+      <section className="my-10 flex-center flex-col bg-indigo-500 h-auto py-3 rounded">
+        <h2 className="text-2xl font-bold mb-3 text-white">
+          React Project Ideas
+        </h2>
+        <form
+          className="flex flex-col border-2 p-3 rounded"
+          onSubmit={addProjectIdea}
+        >
+          <input
+            className="mb-3 p-2 rounded border border-gray-400 focus:outline-red-500"
+            type="text"
+            ref={inputRef}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder="Enter a project idea"
+          />
+          <button className="button bg-blue-500 mt-3 text-white font-normal">
+            Submit
+          </button>
+        </form>
+        <ol className="list-decimal bg-white/80 h-auto p-3 w-1/2 rounded mt-3 font-semibold text-lg list-inside">
+          {list.map((idea, i) => (
+            <li key={i}>{idea}</li>
+          ))}
+        </ol>
+      </section>
     </main>
   );
 }
