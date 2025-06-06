@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+@layer base {
+  * {
+    @apply box-border m-0 p-0;
+  }
+  body {
+    @apply bg-gray-200;
+  }
+  a {
+    @apply hover:text-amber-500 hover:border-b-2 hover:border-b-amber-500;
+  }
+}
+
 @layer components {
   .nav-link {
     @apply border-b-2 border-b-amber-500 text-amber-500;
