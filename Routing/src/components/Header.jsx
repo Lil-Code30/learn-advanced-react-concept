@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -6,12 +6,24 @@ export default function Header() {
       <h1 className="font-Inter font-medium text-2xl">React Router</h1>
       <nav>
         <ul className="flex gap-x-3 font-bold text-lg ">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li className="">
-            <Link to="/about">About</Link>
-          </li>
+          <NavLink
+            className={({ isActive }) => (isActive ? "nav-link" : "")}
+            to="/"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? "nav-link" : "")}
+            to="/about"
+          >
+            About
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? "nav-link" : "")}
+            to="/contact"
+          >
+            Contact
+          </NavLink>
         </ul>
       </nav>
     </header>
