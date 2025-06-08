@@ -31,6 +31,27 @@ export default function Home() {
     </div>
   ));
 
+  function handleFilterChange(key, value) {
+    setSearchParams((prevParams) => {
+      if (value === null) {
+        prevParams.delete(key);
+      } else {
+        prevParams.set(key, value);
+      }
+      return prevParams;
+    });
+  }
+
+  function genNewSearchParamString(key, value) {
+    const sp = new URLSearchParams(searchParams);
+    if (value === null) {
+      sp.delete(key);
+    } else {
+      sp.set(key, value);
+    }
+    return `?${sp.toString()}`;
+  }
+
   return (
     <main className="p-5">
       <h2 className="text-3xl font-black my-5">Home</h2>
@@ -38,19 +59,19 @@ export default function Home() {
         <p className="text-gray-500 ">Filter by type:</p>
         <button
           className="text-white bg-gray-500 px-2 rounded hover:bg-gray-600"
-          onClick={() => setSearchParams({})}
+          onClick={() => handleFilterChange("type", null)}
         >
           All
         </button>
         <button
           className="text-white bg-blue-500 px-2 rounded hover:bg-blue-600 hover:cursor-pointer"
-          onClick={() => setSearchParams({ type: "jedi" })}
+          onClick={() => handleFilterChange("type", "jedi")}
         >
           Jedi
         </button>
         <button
           className="text-white bg-red-500 px-2 rounded hover:bg-red-600"
-          onClick={() => setSearchParams({ type: "sith" })}
+          onClick={() => handleFilterChange("type", "sith")}
         >
           Sith
         </button>
