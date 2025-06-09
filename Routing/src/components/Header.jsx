@@ -24,6 +24,12 @@ export default function Header() {
           >
             Contact
           </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? "nav-link" : "")}
+            to="protected"
+          >
+            Protected
+          </NavLink>
         </ul>
       </nav>
     </header>
